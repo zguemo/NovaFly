@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaFly | Reserva tus vuelos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo/logo.png" class="logo" width="12%">
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/vuelos.html">Vuelos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/destinos.html">Destinos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/mis-reservas.html">Mis Reservas</a></li>
+                    <button  id="btnModoOscuro" class="btn btn-outline-light btn-sm"type="button">
+                            <i class="bi bi-moon"></i> Modo oscuro
+                    </button>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero">
+    <div class="container">
+        <div class="hero-content text-center">
+            <h1>Vuela más lejos con <span>NovaFly</span></h1>
+            <p>Reserva vuelos nacionales e internacionales al mejor precio.</p>
+        </div>
+        <div class="search-box shadow-lg">
+            <form class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Origen">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Destino">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary w-100">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+    <section class="container py-5">
+        <h2 class="text-center mb-5">Destinos Populares</h2>
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/destinos/cartagena.jpg" class="card-img-top" class="">
+                    <div class="card-body">
+                        <h5>Cartagena</h5>
+                        <p>Desde $249.900</p>
+                        <button class="btn btn-outline-primary" onclick="buscarDestino('Cartagena')">Ver vuelos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/destinos/madrid.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>Madrid</h5>
+                        <p>Desde $2.499.000</p>
+                        <button class="btn btn-outline-primary" onclick="buscarDestino('Madrid')">Ver vuelos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/destinos/miami.jpg" class="card-img-top"">
+                    <div class="card-body">
+                        <h5>Miami</h5>
+                        <p>Desde $1.299.000</p>
+                        <button class="btn btn-outline-primary" onclick="buscarDestino('Miami')">Ver vuelos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="img/destinos/paris.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5>París</h5>
+                        <p>Desde $3.299.000</p>
+                        <button class="btn btn-outline-primary" onclick="buscarDestino('Paris')">Ver vuelos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="container py-5">
+    <h2 class="text-center mb-4"><i class="bi bi-clock-history me-2"></i>Horarios locales en nuestros destinos</h2>
+    <div class="row g-4 text-center">
+        <div class="col-6 col-md-3">
+            <div class="reloj-box p-3 border rounded shadow-sm">
+                <h5>Colombia</h5>
+                <p class="fs-4 fw-bold text-primary mb-0" id="reloj-colombia">--:--:--</p>
+                <small class="text-muted">Cartagena / Bogotá</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="reloj-box p-3 border rounded shadow-sm">
+                <h5>Miami</h5>
+                <p class="fs-4 fw-bold text-primary mb-0" id="reloj-miami">--:--:--</p>
+                <small class="text-muted">EE. UU.</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="reloj-box p-3 border rounded shadow-sm">
+                <h5>Madrid</h5>
+                <p class="fs-4 fw-bold text-primary mb-0" id="reloj-madrid">--:--:--</p>
+                <small class="text-muted">España</small>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="reloj-box p-3 border rounded shadow-sm">
+                <h5>París</h5>
+                <p class="fs-4 fw-bold text-primary mb-0" id="reloj-paris">--:--:--</p>
+                <small class="text-muted">Francia</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Por qué elegir NovaFly?</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <i class="bi bi-airplane display-4 text-primary"></i>
+                    <h4 class="mt-3">+120 Destinos</h4>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-shield-check display-4 text-primary"></i>
+                    <h4 class="mt-3">Seguridad</h4>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-cash-coin display-4 text-primary"></i>
+                    <h4 class="mt-3">Mejores precios</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <h4>NovaFly</h4>
+            <p>Vuela más lejos, vive más experiencias.</p>
+            <small>© 2026 NovaFly Airlines.</small>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/modo-oscuro.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
