@@ -412,6 +412,9 @@ if (destinoSeleccionado) {
     );
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarResultados(vuelos, "", 1);
+});
 
 
 
