@@ -1,3 +1,24 @@
+const formularioBusqueda = document.getElementById("formBusqueda");
+
+formularioBusqueda.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const origen = document.getElementById("origen").value.trim();
+    const destino = document.getElementById("destino").value.trim();
+    const fechaIda = document.getElementById("fechaIda").value;
+    const fechaRegreso = document.getElementById("fechaRegreso").value;
+
+    const parametros = new URLSearchParams({
+        origen: origen,
+        destino: destino,
+        fechaIda: fechaIda,
+        fechaRegreso: fechaRegreso
+    });
+
+    window.location.href = "pages/vuelos.html?" + parametros.toString();
+});
+
 function buscarDestino(destino) {
     window.location.href =
         "pages/vuelos.html?destino=" +
@@ -73,3 +94,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actualiza cada 10 segundos para no saturar la red y mantener sincronizado
     setInterval(actualizarRelojes, 10000); 
 });
+

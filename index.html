@@ -37,21 +37,42 @@
             <p>Reserva vuelos nacionales e internacionales al mejor precio.</p>
         </div>
         <div class="search-box shadow-lg">
-            <form class="row g-3">
+            <form id="formBusqueda" class="row g-3">
                 <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="Origen">
+                    <input
+                        id="origen"
+                        type="text"
+                        class="form-control"
+                        placeholder="Origen"
+                        required>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" class="form-control" placeholder="Destino">
+                    <input
+                        id="destino"
+                        type="text"
+                        class="form-control"
+                        placeholder="Destino"
+                        required>
                 </div>
                 <div class="col-md-2">
-                    <input type="date" class="form-control" placeholder="Fecha ida">
+                    <input
+                        id="fechaIda"
+                        type="date"
+                        class="form-control"
+                        required>
                 </div>
                 <div class="col-md-2">
-                    <input type="date" class="form-control" placeholder="Fecha Regreso">
+                    <input
+                        id="fechaRegreso"
+                        type="date"
+                        class="form-control">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-primary w-100">Buscar</button>
+                    <button
+                        type="submit"
+                        class="btn btn-primary w-100">
+                        Buscar
+                    </button>
                 </div>
             </form>
         </div>

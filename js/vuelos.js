@@ -1,6 +1,9 @@
 const formularioBusqueda = document.getElementById("formBusqueda");
 const parametros = new URLSearchParams(window.location.search);
 const destinoSeleccionado = parametros.get("destino");
+const origenSeleccionado = parametros.get("origen");
+const fechaSeleccionada = parametros.get("fechaIda");
+
 const vuelos = [
     {
         origen: "bogota",
@@ -391,31 +394,32 @@ function reservarVuelo(
     window.location.href = "reserva.html";
 }
 
-if (destinoSeleccionado) {
+if (origenSeleccionado && destinoSeleccionado) {
+    const origen = normalizar(origenSeleccionado);
+    const destino = normalizar(destinoSeleccionado);
 
-    const destino = destinoSeleccionado
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
+    const resultados = vuelos.filter(function (vuelo) {
+        return vuelo.origen === origen &&
+               vuelo.destino === destino;
+    });
+    mostrarResultados(
+        resultados,
+        fechaSeleccionada || "",
+        1
+    );
+} else if (destinoSeleccionado) {
+    const destino = normalizar(destinoSeleccionado);
     const resultados = vuelos.filter(function (vuelo) {
         return vuelo.destino === destino;
     });
-
-    const contenedor = document.getElementById("resultadosVuelos");
-
     mostrarResultados(
         resultados,
         "",
         1
     );
-}
-
-document.addEventListener("DOMContentLoaded", function () {
+} else {
     mostrarResultados(vuelos, "", 1);
-});
-
+}
 
 
 const destinoGuardado =
@@ -430,3 +434,4 @@ if (destinoGuardado) {
         "destinoSeleccionado"
     );
 }
+
